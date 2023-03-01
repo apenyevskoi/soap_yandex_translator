@@ -24,11 +24,10 @@ class Soap(ServiceBase):
 def translate(tx, lang):
     print('here_translater')
     tr = Translater()
-    tr.set_key('AQVNyU9GHrUu9k1XtiX0zHtD1aWj1nngStKkGDfG')
     tr.set_from_lang('en')
     tr.set_to_lang('ru')
     tr.set_iamtoken('t1.9euelZqUyJHJmo6JjpCbz5OdmpaMle3rnpWamZSQj46UkZOWxpCTxonHms_l8_cWRARg-e9DdF97_N3z91ZyAWD570N0X3v8.pC_p5YL6L8aiOUPh70ZIubZLAHGAwIC7UCrOSM9Q4W0A79GhrU73FtnlpqRhGfK1j5sN_C68-sT-VSnusTB-Cg')
-    tr.set_folderid('b1gb1fhoumsnjsorfivs')
+    tr.set_folderid('')
     tr.set_target_language(lang)
     tr.set_text(tx)
     return tr.translate()
