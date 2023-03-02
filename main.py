@@ -10,27 +10,28 @@ from spyne import Application, rpc, ServiceBase, Unicode
 обращаться в Yandex-translator, получать перевод и данный перевод отдавать клиенту. Принимаются входящие запросы 
 в XML-формате. Ответ также будет уходить в XML-формате
 '''
-
+#SoapUI
+#http://localhost:8080?wsdl
 class Soap(ServiceBase):
-    @rpc(Unicode, _returns=Unicode)
-    def Insoap(ctx, text):
+    @rpc(str, str, _returns=Unicode)
+    def Insoap(ctx, text, lang):
         print(lxml.etree.tostring(ctx.in_document))
         # return "Response from Server"
-        return translate(text, 'ru')
+        return translate(text, lang)
 
 
 def translate(tx, lang):
-    print('here_translater')
     tr = Translater()
+    tr.set_key('')
     tr.set_from_lang('en')
     tr.set_to_lang('ru')
-    tr.set_iamtoken('t1.9euelZqUyJHJmo6JjpCbz5OdmpaMle3rnpWamZSQj46UkZOWxpCTxonHms_l8_cWRARg-e9DdF97_N3z91ZyAWD570N0X3v8.pC_p5YL6L8aiOUPh70ZIubZLAHGAwIC7UCrOSM9Q4W0A79GhrU73FtnlpqRhGfK1j5sN_C68-sT-VSnusTB-Cg')
-    tr.set_folderid('b1gb1fhoumsnjsorfivs')
+    tr.set_iamtoken('')
+    tr.set_folderid('')
     tr.set_target_language(lang)
     tr.set_text(tx)
     return tr.translate()
 
-app = Application([Soap], tns='ya_Translator', in_protocol=Soap11(), out_protocol=Soap11())
+app = Application([Soap], tns='Original', name='Significant', in_protocol=Soap11(), out_protocol=Soap11())
 application = WsgiApplication(app)
 
 if __name__ == '__main__':
