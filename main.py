@@ -15,7 +15,7 @@ from spyne import Application, rpc, ServiceBase, Unicode
 class Soap(ServiceBase):
     @rpc(str, str, _returns=Unicode)
     def Insoap(ctx, text, lang):
-        print(lxml.etree.tostring(ctx.in_document))
+        # print(lxml.etree.tostring(ctx.in_document))
         # return "Response from Server"
         return translate(text, lang)
 
