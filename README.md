@@ -1,2 +1,2 @@
 # soap_yandex_translator
-Simple request translator using yandex translate service (token, folder id).
+Simple service to translate request using yandex translating service (token, folder id).
